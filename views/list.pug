@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h2 #{title}
+  .list-group
+    each topology, i in topologies
+      a.list-group-item(href='/topology/'+topology._id) 
+        h4.list-group-item-heading #{topology.scanTitle}
+        p.list-group-item-text #{topology.scanDate}

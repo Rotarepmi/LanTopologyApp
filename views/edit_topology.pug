@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h2 #{title}
+    a.btn.btn-default(href='/topology/'+topology._id)
+      span.glyphicon.glyphicon-arrow-left  Powrót
+  .container
+    form.edit-form
+      .form-group
+        label Tytuł skanu:
+        input.form-control(type='text', name='scanTitle', value=topology.scanTitle)
+      .form-group.hidden
+        label Autor skanu:
+        input.form-control(type='text', name='scanAuthor', value=topology.scanAuthor)
+      .form-group
+        label Data skanu:
+        input.form-control(type='text', name='scanDate', value=topology.scanDate)
+      .well
+        .form-group
+          label Localhost IP:
+          input.form-control(type='text', name='localhost-ip', value=topology.localhost.ip)
+        .form-group
+          label Nazwa:
+          input.form-control(type='text', name='localhost-hostname', value=topology.localhost.hostname)
+      each host, i in topology.hosts
+        .well
+          .form-group
+            label Nazwa:
+            input.form-control.hostname(type='text', name=i+'-hostname', data-id=i, value=host.hostname)
+          .form-group
+            label IP:
+            input.form-control.ip(type='text', name=i+'-ip', data-id=i, value=host.ip)
+          .form-group
+            label MAC:
+            input.form-control.mac(type='text', name=i+'-mac', data-id=i, value=host.mac)
+          .form-group
+            label Vendor:
+            input.form-control.vendor(type='text', name=i+'-vendor', data-id=i, value=host.vendor)
+          if host.ports
+            each port, j in host.ports
+              .form-group.port
+                label Port:
+                input.form-control(type='text', name=i+'-port-'+j, data-id=i, value=port.portNum)
+                label Usluga:
+                input.form-control(type='text', name=i+'-service-'+j, data-id=i, value=port.service)
+
+      button.btn.btn-success.submit-edit(type='submit', data-id=topology._id) Potwierdź zmiany

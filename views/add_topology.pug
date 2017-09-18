@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .alert.alert-info Użyj w konsoli "npm -oX skan.xml [ip twojej bramy domyślnej] / [maska]" i prześlij plik skanu na serwer.
+  h2 #{title}
+  .container
+    form.form-horizontal(method='POST', action='/topology/add', enctype='multipart/form-data')
+      .form-group
+        label Tytuł
+        input.form-control(name='scanTitle', type='text')
+      .form-group
+        label Plik
+        input.form-control(name='scan', type='file')
+      button.btn.btn-primary(type='submit', value='Submit') Wyślij
+    

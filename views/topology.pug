@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  
+  h2 Tytuł: #{topology.scanTitle}
+  .well
+    p Autor: #{author}
+    p Data skanu: #{topology.scanDate}
+  
+  button.btn.btn-primary.load-topology(type='button', data-toggle='collapse', data-target='#collapseMap', aria-expanded='false', aria-controls='collapse', data-id=topology._id) Wczytaj mapę
+  button.btn.btn-primary(type='button', data-toggle='collapse', data-target='#collapsePorts', aria-expanded='false', aria-controls='collapse', data-id=topology._id) Pokaż porty
+  if user
+    if user.id == topology.scanAuthor
+      a.btn.btn-default(href='/topology/edit/'+topology._id) Edytuj
+      a.btn.btn-danger.delete-topology(href='#', data-id=topology._id) Usuń
+      
+  .collapse#collapseMap
+    .well.mynetwork-wrapper
+      #mynetwork
+  
+  .collapse#collapsePorts
+    .well
+      if topology.hosts
+        each host, i in topology.hosts
+          if host.ports
+            h3 #{host.hostname}
+            each port, i in host.ports
+              p Port: #{port.portNum} - #{port.service}

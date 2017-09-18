@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h2 #{title}
+  .container
+    form.form-horizontal(method='POST', action='/users/login')
+      .form-group
+        label.control-label.col-sm-2(for='log-username') Nazwa użytkownika:
+        .col-sm-5
+          input.form-control(id='log-username', name='username', type='text')
+      .form-group
+        label.control-label.col-sm-2(for='log-password') Hasło:
+        .col-sm-5
+          input.form-control(id='log-password', name='password', type='password')
+      button.btn.btn-primary.col-sm-offset-6(type='submit', value='Submit') Zaloguj

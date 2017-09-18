@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 #{title}
+  .well
+    p Projekt aplikacji webowej - skaner i wizualizator topologii sieciowej.
+    p Wykorzystane technologie webowe:
+    ul
+      li Node.js
+      li Express.js
+      li MongoDB
+      li Pug
+      li JQuery
+      li Vis.js
+      li Bootstrap
+    p Aplikacja zbudowana na podstawie modelu MVC i REST API (przynajmniej takie jest założenie).
+    p Skanowanie topolgii sieci odbywa się za pomocą nmap.
+    p Krótki opis działania:
+    ol
+      li Użytkownik rejestruje się, a następnie loguje do aplikacji.
+      li Na swojej maszynie wykonuje skan z użyciem nmap i zapisuje plik w formacie XML.
+      li Plik ze skanem umieszcza w formularzu i wysyła na serwer.
+      li Serwer zapisuje plik w swoim lokalnym katalogu, następnie przetwarza go na format JSON i zapisuje interesujące nas dane do MongoBD.
+      li Gdy użytkownik chce otworzyć zapisaną topolgię, wykonywane jest żadanie get. Następnie dane z obiektu JSON prezentowane są na grafie z pomocą Vis.js.
+      li Aby edytować topologię, tworzony jest nowy obiekt JSON, a poprzedni zostaje nadpisany w bazie.
+    a(href='https://github.com/Rotarepmi/Studies/tree/master/LAN%20Topology%20App') Repozytorium GItHub z kodem aplikacji.

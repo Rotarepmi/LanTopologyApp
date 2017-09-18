@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 #{title}
+  .container
+    form.form-horizontal(method='POST', action='/users/register')
+      .form-group
+        label.control-label.col-sm-2(for='reg-username') Nazwa użytkownika:
+        .col-sm-5
+          input.form-control(id='reg-username', name='username', type='text')
+      .form-group
+        label.control-label.col-sm-2(for='reg-email') Email:
+        .col-sm-5
+          input.form-control(id='reg-email', name='email', type='email')
+      .form-group
+        label.control-label.col-sm-2(for='reg-password') Hasło:
+        .col-sm-5
+          input.form-control(id='reg-password', name='password', type='password')
+      .form-group
+        label.control-label.col-sm-2(for='reg-passwrod2') Potwierdź hasło:
+        .col-sm-5
+          input.form-control(id='reg-password2' name='password2', type='password')
+      button.btn.btn-primary.col-sm-offset-6(type='submit', value='Submit') Zarejestruj
