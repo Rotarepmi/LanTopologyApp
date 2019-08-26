@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .alert.alert-info Użyj w konsoli "npm -oX skan.xml [ip twojej bramy domyślnej] / [maska]" i prześlij plik skanu na serwer.
+  .alert.alert-info Użyj w konsoli "nmap -oX skan.xml [ip twojej bramy domyślnej] / [maska]" i prześlij plik skanu na serwer.
   h2 #{title}
   .container
     form.form-horizontal(method='POST', action='/topology/add', enctype='multipart/form-data')
